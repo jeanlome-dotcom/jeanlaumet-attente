@@ -1,0 +1,45 @@
+---
+// Le logo de Jean, récupéré sur le site actuel (7795 × 2362, une seule teinte
+// #7d4016). On n'en garde que l'alpha, en masque, et on le peint en CSS :
+// chaque direction le recolore sans toucher au fichier. Le tracé vectoriel
+// reste à faire.
+interface Props {
+  /** Largeur CSS. Le bloc garde le ratio du lettrage. */
+  largeur?: string;
+  /** Définition du masque : 800 pour la barre de nav, 2400 pour le héros. */
+  def?: 800 | 1600 | 2400;
+  class?: string;
+}
+const { largeur = '18rem', def = 1600, class: classe } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<span
+  data-logo
+  class={classe}
+  role="img"
+  aria-label="Jean Laumet, tailleur"
+  style={`--largeur: ${largeur}; --masque: url('${base}/logo/jean-laumet-${def}.png');`}
+></span>
+
+<style>
+  /* Spécificité nulle : n'importe quel appelant peut poser sa couleur. */
+  :where([data-logo]) {
+    color: #7d4016;
+  }
+  [data-logo] {
+    display: block;
+    width: var(--largeur);
+    max-width: 100%;
+    aspect-ratio: 7324 / 1969;
+    background-color: currentColor;
+    -webkit-mask-image: var(--masque);
+    mask-image: var(--masque);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+  }
+</style>

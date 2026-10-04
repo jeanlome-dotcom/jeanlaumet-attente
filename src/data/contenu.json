@@ -1,0 +1,56 @@
+{
+  "site": {
+    "adresse": [
+      "57 rue de Valenciennes",
+      "59000 Lille"
+    ],
+    "email": "infos@jeanlaumet.com",
+    "instagram": "https://www.instagram.com/jeanlaumet.tailleur/",
+    "metier": "Tailleur et denim, Lille",
+    "nom": "Jean Laumet"
+  },
+  "pieces": [
+    {
+      "slug": "veste-travail-chevron-noir",
+      "nom": "Veste de travail chevron noir",
+      "image": {
+        "base": "https://cdn.sanity.io/images/zyezlzer/production/619465160daaac63271daed23899a7572243966f-3601x5400.jpg",
+        "ratio": 0.6668518518518518,
+        "alt": "La veste de travail portée, plan large",
+        "largeurs": [
+          480,
+          960,
+          1440
+        ]
+      }
+    },
+    {
+      "slug": "veste-chasse-velours-marron",
+      "nom": "Veste de chasse velours marron",
+      "image": {
+        "base": "https://cdn.sanity.io/images/zyezlzer/production/68fed32616844f09ebe089031a7ad81e47a64505-3602x5400.jpg",
+        "ratio": 0.667037037037037,
+        "alt": "La veste de chasse brune portée, de face",
+        "largeurs": [
+          480,
+          960,
+          1440
+        ]
+      }
+    },
+    {
+      "slug": "pantalon-chevron-noir",
+      "nom": "Pantalon chevron noir",
+      "image": {
+        "base": "https://cdn.sanity.io/images/zyezlzer/production/47eeeba6d7249aa1c4bd37fb4a1768c1dd1a62d7-3602x5400.jpg",
+        "ratio": 0.667037037037037,
+        "alt": "Le pantalon chevron porté, de face",
+        "largeurs": [
+          480,
+          960,
+          1440
+        ]
+      }
+    }
+  ]
+}

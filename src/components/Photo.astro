@@ -1,0 +1,36 @@
+---
+// Une photo en plusieurs largeurs : WebP depuis le CDN de Sanity, AVIF + WebP
+// pour les dérivés locaux (adresse-image.ts). Ne porte aucun style : la
+// direction qui l'emploie lui passe sa classe et son `sizes`. Le point
+// d'intérêt choisi dans le Studio arrive en variable CSS (`--point-interet`),
+// que la direction applique en `object-position` si elle recadre ; sa couleur
+// moyenne (teinte.ts) en `--teinte`, que la direction peut donner au cadre.
+import { LARGEURS, adresseImage, avecAvif, jeu } from '../lib/adresse-image';
+
+interface Props {
+  /** Une vue de pièce (Derive) ou une image d'archive (ImageArchive, qui s'arrête à 1440). */
+  image: { base: string; ratio: number; alt?: string; largeurs?: number[]; point?: string; teinte?: string };
+  alt?: string;
+  sizes?: string;
+  class?: string;
+  eager?: boolean;
+}
+const { image, alt = image.alt ?? '', sizes = '100vw', class: classe, eager = false } = Astro.props;
+const largeurs = image.largeurs ?? LARGEURS;
+const largeur = 1440;
+const variables = [image.point && `--point-interet: ${image.point}`, image.teinte && `--teinte: ${image.teinte}`].filter(Boolean).join('; ');
+---
+<picture class={classe} style={variables || undefined}>
+  {avecAvif(image.base) && <source type="image/avif" srcset={jeu(image.base, largeurs, 'avif')} sizes={sizes} />}
+  <img
+    src={adresseImage(image.base, largeurs.includes(960) ? 960 : largeurs[0])}
+    srcset={jeu(image.base, largeurs, 'webp')}
+    sizes={sizes}
+    alt={alt}
+    width={largeur}
+    height={Math.round(largeur / image.ratio)}
+    loading={eager ? 'eager' : 'lazy'}
+    decoding="async"
+    fetchpriority={eager ? 'high' : undefined}
+  />
+</picture>
