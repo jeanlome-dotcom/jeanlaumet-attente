@@ -10,7 +10,7 @@ Une page autonome, basée sur le logo, la typographie et le contenu du projet `.
 
 Le contenu sélectionné est un instantané du Sanity publié au 4 octobre 2026 dans `src/data/contenu.json`. Les trois photos passent par `Photo.astro` et le générateur d’adresses du projet d’origine, avec leurs variantes adaptées à l’écran.
 
-La balise Google fournie est intégrée. L’indexation reste fermée conformément à la décision du projet source. Pour une ouverture publique aux moteurs, retirer la balise `robots` de `src/pages/index.astro` et remplacer `Disallow: /` par `Allow: /` dans `public/robots.txt`.
+La balise Google fournie est intégrée. L’indexation est autorisée : aucune balise `noindex` et un fichier `robots.txt` ouvert à tous les robots, y compris les robots IA. Cette ouverture concerne uniquement la page d’attente et ne garantit pas le maintien du référencement des anciennes pages.
 
 ## GitHub Pages
 
